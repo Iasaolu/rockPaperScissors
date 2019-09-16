@@ -1,0 +1,49 @@
+const getUserChoice = userInput => {
+  userInput = userInput.toLowerCase();
+  if(userInput === 'rock' || userInput === 'paper' || userInput === 'scissors' || userInput === 'bomb'){
+    return (userInput);
+  }
+  else{
+    console.log('ERROR! WRONG INPUT!')
+  }
+}
+
+function getComputerChoice(){
+  randomNumber = Math.floor(Math.random() * 3)
+  switch(randomNumber){
+    case 0:
+      return 'rock'
+      break;
+    case 1:
+      return 'paper'
+      break;
+    case 2:
+      return 'scissors'
+      break;
+  }
+}
+function determineWinner (userChoice, computerChoice){
+  if(userChoice === computerChoice){
+    return ('Game is tied')
+  }
+  else if(userChoice === 'rock' && computerChoice === 'scissors'){    
+    return('You won!')}
+  else if(userChoice === 'paper' && computerChoice === 'rock'){
+    return('You won!')}
+  else if(userChoice === 'scissors' && computerChoice === 'paper'){
+    return('You won!')
+  }
+  else if(userChoice === 'bomb'){
+    return('Cheat code activated! You won!!')
+  }
+  else {
+    return ('Computer won!')
+  }
+}
+function playGame(){
+  const userChoice = getUserChoice('bomb')
+  const computerChoice = getComputerChoice();
+  console.log(`User choice is ${userChoice} and computer choice is ${computerChoice}.`)
+  console.log(determineWinner(userChoice, computerChoice))
+}
+playGame()
